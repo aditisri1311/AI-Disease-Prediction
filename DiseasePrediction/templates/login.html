@@ -1,0 +1,31 @@
+<!-- templates/predictor/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login as</h2>
+    <form id="login-form">
+        <select id="role">
+            <option value="patient">Patient</option>
+            <option value="admin">Admin</option>
+        </select>
+        <button type="button" onclick="redirectToDashboard()">Login</button>
+    </form>
+
+    <script>
+        function redirectToDashboard() {
+            let role = document.getElementById("role").value;
+            if (role === "patient") {
+                window.location.href = "{% url 'patient_dashboard' %}";
+            } else {
+                // Redirect to Django's built-in admin panel
+                window.location.href = "/admin/";
+            }
+        }
+    </script>
+</body>
+</html>
